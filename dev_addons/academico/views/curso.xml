@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+        <record id="view_curso_form" model="ir.ui.view">
+            <field name="name">academico curso form</field>
+            <field name="model">academico.curso</field>
+            <field name="arch" type="xml">
+                <form string="Curso">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            
+                            <!-- <field name="nivel_id"/> -->  
+                           <!-- -->  
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+          </record>
+          
+          <record id="view_curso_tree" model="ir.ui.view">
+            <field name="name">academico curso list</field>
+            <field name="model">academico.curso</field>
+            <field name="arch" type="xml">
+                <tree string="Curso">
+                    <field name="name"/>
+                   
+                 <!--  <field name="name"/>-->  
+                    <!--<field name="nivel_id"/> -->  
+            
+                </tree>
+            </field>
+          </record>
+    
+          <record model="ir.actions.act_window" id="academico.action_curso_window">
+            <field name="name">academico curso window</field>
+            <field name="res_model">academico.curso</field>
+            <field name="view_mode">tree,form</field>
+          </record>
+          
+          <menuitem name="Cursos" id="academico.menu_1_curso_list" parent="academico.menu_1"
+          action="academico.action_curso_window"/>
+    </data>
+</odoo>

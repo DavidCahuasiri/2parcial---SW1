@@ -1,0 +1,67 @@
+<odoo>
+    <data>
+        <record id="view_profesor_form" model="ir.ui.view">
+            <field name="name">academico profesor form</field>
+            <field name="model">academico.profesor</field>
+            <field name="arch" type="xml">
+                <form string="Profesor">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="email"/>
+                            <field name="telefono"/>
+                            <field name="materia_ids" widget="many2many_tags"/>
+                            <field name="curso_id"/>
+                            <field name="nivel_id"/>
+                            <field name="horario_ids" readonly="1">
+                            <tree string="Horarios">
+                                <field name="materia_id"/>
+                                <field name="aula_id"/>
+                                <field name="dia_semana"/>
+                                <field name="hora_inicio"/>
+                                <field name="hora_fin"/>
+                            </tree>
+                            <form string="Horario">
+                                <group>
+                                    <field name="materia_id"/>
+                                    <field name="aula_id"/>
+                                </group>
+                                <group>
+                                    <field name="dia_semana"/>
+                                    <field name="hora_inicio"/>
+                                    <field name="hora_fin"/>
+                                </group>
+                            </form>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+      
+        <record id="view_profesor_tree" model="ir.ui.view">
+            <field name="name">academico profesor list</field>
+            <field name="model">academico.profesor</field>
+            <field name="arch" type="xml">
+                <tree string="Profesor">
+                    
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="telefono"/>
+                    <field name="materia_ids" widget="many2many_tags"/>
+                    <field name="nivel_id"/>
+                    <field name="horario_ids"/>
+                    
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="academico.action_profesor_window">
+            <field name="name">academico profesor window</field>
+            <field name="res_model">academico.profesor</field>
+            <field name="view_mode">tree,form</field>
+          </record>
+          <menuitem name="Profesores" id="academico.menu_1_profesor_list" parent="academico.menu_1"
+          action="academico.action_profesor_window"/>
+    </data>
+</odoo>

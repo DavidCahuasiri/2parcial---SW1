@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+        <record id="view_aula_form" model="ir.ui.view">
+            <field name="name">academico aula form</field>
+            <field name="model">academico.aula</field>
+            <field name="arch" type="xml">
+                <form string="Aula">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="curso_id"/>
+                             <field name="nivel_id"/>
+                            
+                            <field name="capacidad"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    
+        <record id="view_aula_tree" model="ir.ui.view">
+            <field name="name">academico aula list</field>
+            <field name="model">academico.aula</field>
+            <field name="arch" type="xml">
+                <tree string="Aula">
+                    <field name="name"/>
+                    <field name="curso_id"/>
+                    <field name="nivel_id"/>
+                    
+                    <field name="capacidad"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="academico.action_aula_window">
+            <field name="name">academico aula window</field>
+            <field name="res_model">academico.aula</field>
+            <field name="view_mode">tree,form</field>
+          </record>
+          <menuitem name="Aulas" id="academico.menu_1_aula_list" parent="academico.menu_1"
+          action="academico.action_aula_window"/>
+        
+    </data>
+</odoo>
