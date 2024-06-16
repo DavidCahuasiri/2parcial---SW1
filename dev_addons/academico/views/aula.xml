@@ -7,11 +7,13 @@
                 <form string="Aula">
                     <sheet>
                         <group>
-                            <field name="name"/>
+                            <!-- <field name="name"/>
                             <field name="curso_id"/>
                              <field name="nivel_id"/>
                             
-                            <field name="capacidad"/>
+                            <field name="capacidad"/> -->
+                            <field name="name"/>
+                            <field name="capacity"/>
                         </group>
                     </sheet>
                 </form>
@@ -23,17 +25,19 @@
             <field name="model">academico.aula</field>
             <field name="arch" type="xml">
                 <tree string="Aula">
-                    <field name="name"/>
+                    <!-- <field name="name"/>
                     <field name="curso_id"/>
                     <field name="nivel_id"/>
                     
-                    <field name="capacidad"/>
+                    <field name="capacidad"/> -->
+                    <field name="name"/>
+                    <field name="capacity"/>
                 </tree>
             </field>
         </record>
 
         <record model="ir.actions.act_window" id="academico.action_aula_window">
-            <field name="name">academico aula window</field>
+            <field name="name">Crear aulas</field>
             <field name="res_model">academico.aula</field>
             <field name="view_mode">tree,form</field>
           </record>

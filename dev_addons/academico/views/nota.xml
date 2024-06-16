@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+        <record id="view_academico_nota_form" model="ir.ui.view">
+            <field name="name">academico nota form</field>
+            <field name="model">academico.nota</field>
+            <field name="arch" type="xml">
+                <form string="Nota">
+                    <sheet>
+                        <group>
+                            
+                            <!-- <field name="name"/> -->
+                            <field name="estudiante_id"/>
+                            <field name="curso_id" readonly="1"/>
+                            <field name="materia_id"/>
+                            <field name="trimestre"/>
+                            <field name="anio" />
+                            <field name="nota"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_academico_nota_tree" model="ir.ui.view">
+            <field name="name">academico nota tree</field>
+            <field name="model">academico.nota</field>
+            <field name="arch" type="xml">
+                <tree string="Notas">
+                    <!-- <field name="name"/> -->
+                    <field name="estudiante_id"/>
+                    <field name="curso_id" readonly="1"/>
+                    <field name="materia_id"/>
+                    <field name="trimestre"/>
+                    <field name="anio" />
+                    <field name="nota"/>
+                </tree>
+            </field>
+        </record>
+    
+        
+        <record model="ir.actions.act_window" id="academico.action_nota_window">
+            <field name="name">Registrar notas</field>
+            <field name="res_model">academico.nota</field>
+            <field name="view_mode">tree,form</field>
+          </record>
+          
+          <menuitem name="Notas" id="academico.menu_1_nota_list" parent="academico.menu_1"
+          action="academico.action_nota_window"/>
+    </data>
+</odoo>

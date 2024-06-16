@@ -1,43 +1,27 @@
-from odoo import models, fields, api
-from odoo.exceptions import ValidationError
+from odoo import models, fields, api, exceptions
 
 class Estudiante(models.Model):
     _name = 'academico.estudiante'
     _description = 'Estudiante'
 
-    name = fields.Char(string='Nombre', required=True)
-    Apaterno = fields.Char(string='Apellido Paterno', required=True)
-    Amaterno = fields.Char(string='Apellido Materno', required=True)
-    edad = fields.Integer(string='Edad', required=True)
+    name = fields.Char(string='Nombre completo', required=True)
+    ci = fields.Char(string='Cedula de identidad', required=True)
+    email = fields.Char(string='Email')
+    phone = fields.Char(string='Teléfono')
+    gestion = fields.Date(string = 'Año', required=True)
     curso_id = fields.Many2one('academico.curso', string='Curso', required=True)
-    nivel_id = fields.Many2one('academico.nivel', string='Nivel', required=True)
-    horario_ids = fields.Many2many('academico.horario', string='Horarios', compute='_compute_horario_ids', store=True)
-    
-    @api.depends('curso_id', 'nivel_id')
-    def _compute_horario_ids(self):
-        for estudiante in self:
-            if estudiante.curso_id and estudiante.nivel_id:
-                estudiante.horario_ids = self.env['academico.horario'].search([
-                    ('name', '=', estudiante.curso_id.id),
-                    ('nivel', '=', estudiante.nivel_id.id)
-                ])
-            else:
-                estudiante.horario_ids = False
+    nivel_id = fields.Selection(related='curso_id.nivel',string="Nivel")
+    tutor_id=fields.Char(string='Nombre del tutor', required=True)
+    ci_tutor=fields.Char(string='Cedula de identidad tutor', required=True)
+    horario_ids = fields.One2many(related='curso_id.horario_ids', string='Horarios', readonly=True)
+    @api.constrains('curso_id')
+    def _check_classroom_capacity(self):
+        for student in self:
+            if student.curso_id:
+                total_students = len(student.curso_id.estudiante_ids)
+                if total_students > student.curso_id.aula_id.capacity:
+                    raise exceptions.ValidationError("La capacidad del aula no es suficiente para el número de estudiantes.")
 
-    @api.constrains('curso_id', 'nivel_id')
-    def _check_class_capacity(self):
-        for estudiante in self:
-            if estudiante.curso_id and estudiante.nivel_id:
-                horarios = self.env['academico.horario'].search([
-                    ('name', '=', estudiante.curso_id.id),
-                    ('nivel', '=', estudiante.nivel_id.id)
-                ])
-                for horario in horarios:
-                    estudiantes_en_aula = self.search_count([
-                        ('curso_id', '=', estudiante.curso_id.id),
-                        ('nivel_id', '=', estudiante.nivel_id.id)
-                    ])
-                    if estudiantes_en_aula > horario.capacidad_aula:
-                        raise ValidationError(
-                            f"El aula {horario.aula_id.name} para el curso {horario.name.name} y nivel {horario.nivel.name} ha alcanzado su capacidad máxima de {horario.capacidad_aula} estudiantes."
-                        )
+    _sql_constraints = [
+        ('ci_unique', 'UNIQUE(ci)', 'La cédula de identidad debe ser única.')
+    ]

@@ -1,0 +1,67 @@
+<odoo>
+    <data>
+        <record id="view_academico_boletin_form" model="ir.ui.view">
+            <field name="name">academico boletin form</field>
+            <field name="model">academico.boletin</field>
+            <field name="arch" type="xml">
+                <form string="Boletín de Notas">
+                    <sheet>
+                        <group>
+                             <field name="estudiante_id"/> 
+                            <field name="curso_id" readonly="1"/>
+                            <field name="nivel_id" readonly="1"/>
+                             <field name="nota_ids"   /> 
+                            <field name="promedio"/>
+                            <!-- <field name="mat" /> -->
+                        </group>
+                    </sheet>
+                    
+                </form>
+            </field>
+        </record>
+
+        <!-- <record id="view_academico_boletin_tree" model="ir.ui.view">
+            <field name="name">academico boletin tree</field>
+            <field name="model">academico.boletin</field>
+            <field name="arch" type="xml">
+                <tree string="Boletines">
+                    <field name="estudiante_id"/> 
+                            <field name="curso_id" readonly="1"/>
+                             <field name="nota_ids"   /> 
+                            <field name="promedio"/>
+                    
+                </tree>
+            </field>
+        </record> -->
+        <record id="view_boletin_tree" model="ir.ui.view">
+            <field name="name">academico boletin list</field>
+            <field name="model">academico.boletin</field>
+            <field name="arch" type="xml">
+                <tree string="Boletines">         
+                    <field name="estudiante_id"/>
+                    <field name="curso_id" readonly="1"/>
+                    <field name="nivel_id" readonly="1"/>
+                    <!-- <field name="notas_materias_trimestres" /> -->
+                        
+                        <field name="materias_id" />
+                        <field name="notas_id" />
+                        <field name="trimestres_id" />
+                        
+                    <field name="promedio"/>
+                     <field name="estado_aprobacion" /> 
+                </tree>
+            </field>
+          </record>
+        
+    
+      
+        <record model="ir.actions.act_window" id="academico.action_boletin_window">
+            <field name="name">Crear Boletin</field>
+            <field name="res_model">academico.boletin</field>
+            <field name="view_mode">tree,form</field>
+          </record>
+          
+          <menuitem name="Boletin" id="academico.menu_1_boletin_list" parent="academico.menu_1"
+          action="academico.action_boletin_window"/>
+    </data>
+</odoo>

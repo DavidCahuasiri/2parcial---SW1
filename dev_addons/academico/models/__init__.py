@@ -7,5 +7,5 @@ from . import profesor
 from . import aula
 from . import horario
 from . import curso
-from . import nivel
-from . import turno
+from . import nota
+from . import boletin

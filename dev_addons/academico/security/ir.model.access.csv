@@ -1,9 +1,10 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
 access_academico_estudiante,academico.estudiante,model_academico_estudiante,base.group_user,1,1,1,1
 access_academico_materia,academico.materia,model_academico_materia,base.group_user,1,1,1,1
 access_academico_profesor,academico.profesor,model_academico_profesor,base.group_user,1,1,1,1
 access_academico_horario,academico.horario,model_academico_horario,base.group_user,1,1,1,1
 access_academico_aula,academico.aula,model_academico_aula,base.group_user,1,1,1,1
 access_academico_curso,academico.curso,model_academico_curso,base.group_user,1,1,1,1
-access_academico_nivel,academico.nivel,model_academico_nivel,base.group_user,1,1,1,1
-access_academico_turno,academico.turno,model_academico_turno,base.group_user,1,1,1,1
+access_academico_boletin,academico.boletin,model_academico_boletin,base.group_user,1,1,1,1
+access_academico_nota,academico.nota,model_academico_nota,base.group_user,1,1,1,1

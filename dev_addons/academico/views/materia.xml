@@ -7,8 +7,9 @@
                 <form string="Materia">
                     <sheet>
                         <group>
+                            <!-- <field name="name"/> -->
                             <field name="name"/>
-                         
+                            <field name="profesor_id"/>
                            
                          
                         </group>
@@ -22,16 +23,17 @@
             <field name="model">academico.materia</field>
             <field name="arch" type="xml">
                 <tree string="Materia">
+                    <!-- <field name="name"/> -->
                     <field name="name"/>
-                  
+                    <field name="profesor_id"/>
                     
-                     <!--<field name="profesor_id"/>--> 
+                     
                 </tree>
             </field>
         </record>
 
         <record model="ir.actions.act_window" id="academico.action_materia_window">
-            <field name="name">academico materia window</field>
+            <field name="name">Crear materias</field>
             <field name="res_model">academico.materia</field>
             <field name="view_mode">tree,form</field>
           </record>

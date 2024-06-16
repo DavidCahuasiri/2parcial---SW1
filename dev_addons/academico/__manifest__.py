@@ -24,20 +24,23 @@ Long description of module's purpose
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
+        #'views/templates.xml',
         'views/estudiante.xml',
         'views/profesor.xml',
         'views/materia.xml',
         'views/horario.xml',
         'views/aula.xml',
         'views/curso.xml',
-        'views/nivel.xml',
-        'views/turno.xml',
-        'views/templates.xml',
-        
+        'views/nota.xml',
+        'views/boletin.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
+    ],
+    'application': True,
+    'middleware': [
+        'middleware/cors_middleware.py',
     ],
 }
 

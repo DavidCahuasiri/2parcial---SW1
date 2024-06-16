@@ -43,12 +43,10 @@
     <!-- Top menu item -->
 
     <menuitem name="academico" id="academico.menu_root"/>
-    
-<!---->
+
     <!-- menu categories -->
 
     <menuitem name="Academico" id="academico.menu_1" parent="academico.menu_root"/>
-    
    <!-- <menuitem name="Menu 2" id="academico.menu_2" parent="academico.menu_root"/>
 -->
     <!-- actions -->

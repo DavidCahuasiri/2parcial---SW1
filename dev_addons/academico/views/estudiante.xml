@@ -7,33 +7,18 @@
             <field name="arch" type="xml">
                 <form string="Estudiante">
                     <group>
+                       
                         <field name="name"/>
-                        <field name="Apaterno"/>
-                        <field name="Amaterno"/>
-                        <field name="edad"/>
+                        <field name="ci"/>
+                        
+                        <field name="email"/>
+                        <field name="phone"/>
                         <field name="curso_id"/>
                         <field name="nivel_id"/>
-                        
-                        <field name="horario_ids" readonly="1">
-                            <tree string="Horarios">
-                                <field name="materia_id"/>
-                                <field name="aula_id"/>
-                                <field name="dia_semana"/>
-                                <field name="hora_inicio"/>
-                                <field name="hora_fin"/>
-                            </tree>
-                            <form string="Horario">
-                                <group>
-                                    <field name="materia_id"/>
-                                    <field name="aula_id"/>
-                                </group>
-                                <group>
-                                    <field name="dia_semana"/>
-                                    <field name="hora_inicio"/>
-                                    <field name="hora_fin"/>
-                                </group>
-                            </form>
-                        </field>
+                        <field name="gestion"/>
+                        <field name="tutor_id"/>
+                        <field name="ci_tutor"/>
+                        <field name="horario_ids"/>
                     </group>
                 </form>
             </field>
@@ -44,20 +29,24 @@
         <field name="model">academico.estudiante</field>
         <field name="arch" type="xml">
             <tree string="Estudiante">
+            
                 <field name="name"/>
-                <field name="Apaterno"/>
-                <field name="Amaterno"/>
-                <field name="edad"/>
+                <field name="ci"/>
+                <field name="email"/>
+                <field name="phone"/>
                 <field name="curso_id"/>
                 <field name="nivel_id"/>
-                <field name="horario_ids"/>
-               
+                <field name="gestion"/>
+                <field name="tutor_id"/>
+                <field name="ci_tutor"/>
+
+                
             </tree>
         </field>
       </record>
 
       <record model="ir.actions.act_window" id="academico.action_estudiante_window">
-        <field name="name">academico estudiante window</field>
+        <field name="name">Registro de estudiantes</field>
         <field name="res_model">academico.estudiante</field>
         <field name="view_mode">tree,form</field>
       </record>

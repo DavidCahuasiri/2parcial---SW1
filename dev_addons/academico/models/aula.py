@@ -1,25 +1,19 @@
+from odoo import models, fields, api, exceptions
 
-from odoo import models,fields,api
-from odoo.exceptions import ValidationError
-
-class aula(models.Model):
+class Aula(models.Model):
     _name = 'academico.aula'
-    _description = 'academico.aula'
+    _description = 'Aula'
 
-    name = fields.Char(string='Nombre', required=True)
-    curso_id = fields.Many2one('academico.curso')
-    nivel_id = fields.Many2one('academico.nivel')
-    #turno_id = fields.Many2one('academico.turno')
-    capacidad = fields.Integer(string='Capacidad')
-    
-    @api.constrains('name')
-    def check_unique_curso(self):
-        for curso in self:
-            domain = [
-            ('id', '!=', curso.id),
-            ('name', '=', curso.name),
-            
-            ]
-            existing_curso = self.search(domain, limit=1)
-            if existing_curso:
-                raise ValidationError(f"Ya existe el aula {curso.name}.")
+    name = fields.Char(string='Aula', required=True)
+    capacity = fields.Integer(string='Capacidad')
+
+    _sql_constraints = [
+        ('name_unique', 'UNIQUE(name)', 'Ya existe un aula con ese numero, asigne otro numero para el aula.'),
+        ('capacity_positive', 'CHECK(capacity > 0)', 'La capacidad del aula debe ser un número positivo.')
+    ]
+
+    @api.constrains('capacity')
+    def _check_capacity(self):
+        for aula in self:
+            if aula.capacity <= 0:
+                raise exceptions.ValidationError("La capacidad del aula debe ser un número positivo.")

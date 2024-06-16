@@ -7,10 +7,13 @@
                 <form string="Curso">
                     <sheet>
                         <group>
+                          
                             <field name="name"/>
-                            
-                            <!-- <field name="nivel_id"/> -->  
-                           <!-- -->  
+                            <field name="nivel"/>
+                            <field name="aula_id"/>
+                            <field name="materia_ids"/>
+                            <field name="estudiante_ids"/>
+                            <field name="profesor_id" />
                         </group>
                     </sheet>
                 </form>
@@ -22,17 +25,21 @@
             <field name="model">academico.curso</field>
             <field name="arch" type="xml">
                 <tree string="Curso">
+                    
                     <field name="name"/>
-                   
-                 <!--  <field name="name"/>-->  
-                    <!--<field name="nivel_id"/> -->  
+                    <field name="nivel"/>
+                    <field name="aula_id"/>
+                    <field name="materia_ids"/>
+                    <field name="estudiante_ids" />
+                    <field name="profesor_id" />
+                 
             
                 </tree>
             </field>
           </record>
     
           <record model="ir.actions.act_window" id="academico.action_curso_window">
-            <field name="name">academico curso window</field>
+            <field name="name">Crear cursos</field>
             <field name="res_model">academico.curso</field>
             <field name="view_mode">tree,form</field>
           </record>

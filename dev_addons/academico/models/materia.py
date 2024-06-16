@@ -1,24 +1,11 @@
+
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError
-
-
-
-class materia(models.Model):
+class Materia(models.Model):
     _name = 'academico.materia'
-    _description = 'academico.materia'
+    _description = 'Materia'
 
-    name = fields.Char(string='Nombre', required=True)
-    
-    profesor_id = fields.Many2many('academico.profesor', string='Profesor')
-    estudiante_ids = fields.Many2many('academico.estudiante', string='Estudiantes')
-    
-    @api.constrains('name')
-    def check_unique_materia(self):
-        for materia in self:
-            domain = [
-            ('id', '!=', materia.id),
-            ('name', '=', materia.name),
-            ]
-            existing_materia = self.search(domain, limit=1)
-            if existing_materia:
-                raise ValidationError(f"Ya existe la materia {materia.name}.")
+    name = fields.Char(string='Materia', required=True)
+    profesor_id = fields.Many2one('academico.profesor', string='Profesor')
+    _sql_constraints = [
+        ('name_profesor_unique', 'UNIQUE(name, profesor_id)', 'La combinación de nombre de materia y profesor debe ser única.')
+    ]

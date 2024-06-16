@@ -7,16 +7,14 @@
                 <form string="Horario">
                     <sheet>
                         <group>
-                            <field name="name" />
-                             <!--  -->
-                             <field name="nivel" />
-                             
-                            <field name="materia_id"/>
-                            <field name="aula_id"/>
-                            <field name="dia_semana" />
-                            <field name="hora_inicio" widget="custom_time_selector" />
-                            <field name="hora_fin" widget="custom_time_selector" />
-                            
+                         
+                            <field name="name"/>
+                            <field name="nivel_id"/>
+                <field name="materia_id"/>
+                <field name="aula_id"/>
+                <field name="start_time"/>
+                <field name="end_time"/>
+                <field name="estudiante_ids"/>
                                 
                         </group>
                     </sheet>
@@ -29,21 +27,21 @@
             <field name="model">academico.horario</field>
             <field name="arch" type="xml">
                 <tree string="Horario">
-                    <field name="name" />
-                    <field name="nivel" />
-                    <!-- <field name="nivel_h" /> -->
-                    <field name="materia_id"/>
-                    <field name="aula_id"/>
-                    <field name="dia_semana"/>
-                    <field name="hora_inicio"/>
-                    <field name="hora_fin"/>
-                    
+                  
+                    <field name="name"/>
+                    <field name="nivel_id"/>
+                <field name="materia_id"/>
+                <field name="aula_id"/>
+                <field name="start_time"/>
+                <field name="end_time"/>
+                
+                
                 </tree>
             </field>
         </record>
 
         <record model="ir.actions.act_window" id="academico.action_horario_window">
-            <field name="name">academico horario window</field>
+            <field name="name">Crear horarios</field>
             <field name="res_model">academico.horario</field>
             <field name="view_mode">tree,form</field>
           </record>
